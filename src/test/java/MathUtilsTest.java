@@ -13,6 +13,12 @@ class MathUtilsTest {
     }
 
     @Test
+    void testDivide() {
+        final MathUtils mathUtils = new MathUtils();
+        assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), "Divide by 0 should throw");
+    }
+
+    @Test
     void testComputeCircleRadius() {
         MathUtils mathUtils = new MathUtils();
         assertEquals(314.1592653589793, mathUtils.computeCircleArea(10), "Should return correct circle area");
