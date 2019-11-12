@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("When running MathUtils")
 class MathUtilsTest {
 
     MathUtils mathUtils;
@@ -14,12 +15,23 @@ class MathUtilsTest {
         mathUtils = new MathUtils();
     }
 
-    @Test
-    void testAdd() {
-        int expected = 2;
-        int actual = mathUtils.add(1, 1);
-        assertEquals(expected, actual,
-                "Add method should return the sum of two numbers");
+    @Nested
+    @DisplayName("add method")
+    class AddTest {
+
+        @Test
+        @DisplayName("when adding two positive numbers")
+        void testAddPositive() {
+            assertEquals(2, mathUtils.add(1, 1),
+                    "should return the right sum");
+        }
+
+        @Test
+        @DisplayName("when adding two negative numbers")
+        void testAddNegative() {
+            assertEquals(-2, mathUtils.add(-1, -1),
+                    "should return the right sum");
+        }
     }
 
     @Test
